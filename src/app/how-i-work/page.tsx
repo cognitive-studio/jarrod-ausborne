@@ -41,7 +41,7 @@ export default function HowIWorkPage() {
                 </h2>
               </div>
               <div className="pl-[calc(2.5rem+1.5rem)] space-y-5">
-                {section.content.map((paragraph, j) => (
+                {section.content.map((paragraph: string, j: number) => (
                   <p key={j} className="text-brand-muted leading-relaxed text-[15px]">
                     {paragraph}
                   </p>
