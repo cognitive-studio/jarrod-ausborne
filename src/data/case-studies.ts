@@ -3,6 +3,17 @@ export interface ImpactMetric {
   label: string;
 }
 
+export interface ProcessImage {
+  src: string;
+  caption: string;
+  type: "wireframe" | "research" | "iteration" | "final" | "before-after" | "system";
+}
+
+export interface AITool {
+  tool: string;
+  use: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -22,6 +33,10 @@ export interface CaseStudy {
   impact: ImpactMetric[];
   featured: boolean;
   category: string;
+  successMetrics: string[];
+  aiTools: AITool[];
+  nextSteps: string[];
+  processImages: ProcessImage[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -61,6 +76,27 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: true,
     category: "Enterprise Tools",
+    successMetrics: [
+      "Associates close sales on the floor without returning to a register",
+      "Checkout time on big-ticket items under 8 minutes",
+      "New associates field specialist questions on day one",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Component library with tokens mapped to engineering implementation" },
+      { tool: "Maze", use: "Unmoderated usability testing on wireframes during the pilot" },
+      { tool: "Claude", use: "Synthesized 5-store research sessions into actionable patterns" },
+    ],
+    nextSteps: [
+      "Instrument the assist handoff flow — understand why some associates complete sales at the register despite having the floor checkout",
+      "Expand the knowledge base integration so the app surfaces relevant product specs without a search query",
+      "Test a 'customer-facing' mode where the associate hands their device to the customer to review specs and confirm the purchase",
+    ],
+    processImages: [
+      { src: "/images/case-studies/blue-shirt/wireframe.png", caption: "User flow wireframe — Home → Scan → Product Detail → Floor Checkout", type: "wireframe" },
+      { src: "/images/case-studies/blue-shirt/home.png", caption: "Associate home dashboard — daily metrics, product search, recent activity", type: "final" },
+      { src: "/images/case-studies/blue-shirt/scan.png", caption: "Product scan confirmation — instant product card with aisle and stock", type: "final" },
+      { src: "/images/case-studies/blue-shirt/checkout.png", caption: "Floor checkout — tap to pay, no register needed", type: "final" },
+    ],
   },
   {
     slug: "chain-of-custody",
@@ -98,6 +134,26 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: true,
     category: "Enterprise Tools",
+    successMetrics: [
+      "Every part tracked from install through end-of-life — no manual logging",
+      "Ground crews notified at wheels-down with specific parts to pull",
+      "Parts-loss cost recovered through proactive lifecycle alerts",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Designed on top of existing team design system for immediate crew familiarity" },
+      { tool: "Dovetail", use: "Tagged and synthesized 8 maintenance crew research sessions" },
+      { tool: "Lottie", use: "Lifecycle progress animations for parts nearing end-of-life" },
+    ],
+    nextSteps: [
+      "Confirm adoption rate and setup-time savings data from the pilot — numbers are directionally strong but need final confirmation",
+      "Explore predictive EOL alerts using part wear patterns across the fleet, not just calendar-based thresholds",
+      "Extend the chain of custody model to tooling and ground support equipment — same blind spot exists there",
+    ],
+    processImages: [
+      { src: "/images/case-studies/chain-of-custody/dashboard.png", caption: "Parts lifecycle dashboard — fleet-wide visibility for the first time", type: "final" },
+      { src: "/images/case-studies/chain-of-custody/inbound.png", caption: "Inbound board — ground crews notified at wheels-down with pull lists", type: "final" },
+      { src: "/images/case-studies/chain-of-custody/lifecycle.png", caption: "Part detail view — lifecycle bar, custody history, action triggers", type: "final" },
+    ],
   },
   {
     slug: "design-practice-crc",
@@ -135,6 +191,26 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: true,
     category: "Design Systems",
+    successMetrics: [
+      "Design system live and in use within 90 days",
+      "23% reduction in design-to-dev cycle time within first 3 sprints",
+      "New designers onboarding against documented patterns, not reverse-engineering screens",
+    ],
+    aiTools: [
+      { tool: "Claude", use: "Audited 200+ screens to categorize component patterns and identify the real surface area" },
+      { tool: "Figma Variables", use: "Defined token architecture with primitive → semantic → component token layers" },
+      { tool: "Zeroheight", use: "Published design system documentation accessible to engineering without a Figma license" },
+    ],
+    nextSteps: [
+      "Add component usage analytics to track adoption — we retrofitted this at month 4, should have been day 1",
+      "Schedule a 6-month system health review with the engineering lead to catch drift before it compounds",
+      "Formalize a contribution model so senior designers can extend the system without creating inconsistency",
+    ],
+    processImages: [
+      { src: "/images/case-studies/design-practice-crc/before-after.png", caption: "Before and after — 6 inconsistent button variants reduced to 1 component with 3 variants", type: "before-after" },
+      { src: "/images/case-studies/design-practice-crc/token-architecture.png", caption: "Token architecture — primitive → semantic → component, mapped to Figma and engineering", type: "system" },
+      { src: "/images/case-studies/design-practice-crc/component-library.png", caption: "Component library — foundations, components, and patterns shipped in 90 days", type: "final" },
+    ],
   },
   {
     slug: "decoded",
@@ -175,6 +251,24 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "Enterprise Tools",
+    successMetrics: [
+      "Content and marketing teams make weekly data-driven decisions without analyst tickets",
+      "Analyst ticket volume for recurring reports decreases measurably",
+      "Non-technical stakeholders arrive at product reviews with their own data",
+    ],
+    aiTools: [
+      { tool: "Claude", use: "Synthesized stakeholder interview transcripts to define the curated default view metrics" },
+      { tool: "Figma", use: "Rapid IA prototyping to pressure-test progressive disclosure model with stakeholders" },
+      { tool: "Amplitude", use: "Analyzed existing tool usage patterns to identify the 20% of metrics driving 80% of decisions" },
+    ],
+    nextSteps: [
+      "Define decision-level success metrics — monthly active users is a proxy; track whether specific decision types actually changed",
+      "Build a 'save this view' feature so teams can bookmark their standard decision setups",
+      "Explore a proactive alert model — instead of teams pulling data, the system surfaces anomalies automatically",
+    ],
+    processImages: [
+      { src: "/images/case-studies/decoded/dashboard.png", caption: "Content performance intelligence — curated default view for non-technical decision makers", type: "final" },
+    ],
   },
   {
     slug: "skywarden",
@@ -212,6 +306,23 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "Enterprise Tools",
+    successMetrics: [
+      "Operators manage the system with significantly less onboarding time than legacy systems",
+      "Zero interface-related incidents post-launch",
+      "Familiarity-first principle adopted as standard for subsequent Hypergiant defense products",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Prototyped 3 interaction models for operator testing before committing to final approach" },
+      { tool: "Miro", use: "Mapped operator mental models across site visits to identify familiar COTS patterns to borrow" },
+    ],
+    nextSteps: [
+      "Run usability testing in realistic stress conditions — calm review sessions are not the real test",
+      "Explore adaptive density — operators in different threat levels need different amounts of information surface area",
+      "Document the 'familiarity as safety' principle formally as a reusable design standard for future high-stakes interfaces",
+    ],
+    processImages: [
+      { src: "/images/case-studies/skywarden/operator-console.png", caption: "Air defense operator console — familiar patterns borrowed from COTS tools to eliminate training overhead", type: "final" },
+    ],
   },
   {
     slug: "midnight-run",
@@ -257,6 +368,21 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "Research",
+    successMetrics: [
+      "Three testable experience concepts delivered and accepted by the client",
+      "Brief reframed from checkout optimization to eliminating the line entirely",
+      "Research method validated across 42 customers with 21 distinct friction points mapped",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Rapid concepting of three experience prototypes from research insights" },
+      { tool: "Dovetail", use: "Synthesized journey study sessions to surface the 21 friction points" },
+    ],
+    nextSteps: [
+      "Validate order-ahead adoption rate and hot-grill tablet throughput vs. counter wait time in a live pilot",
+      "Measure basket size change when ordering moves off the register to test the revenue uplift thesis",
+      "Build clickable prototypes of all three concepts to test with customers inside the same research sprint",
+    ],
+    processImages: [],
   },
   {
     slug: "the-hustle",
@@ -296,6 +422,21 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "0→1",
+    successMetrics: [
+      "Platform grew from 6 to 18 businesses during tenure",
+      "Both sides of the platform shipped coherently under a single design system",
+      "Design foundation still in use after the founding designer departed",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Built the component library and design system that tied brand, product, and marketing together" },
+      { tool: "Maze", use: "Unmoderated usability testing on onboarding flows with contractor participants" },
+    ],
+    nextSteps: [
+      "Establish a weekly design review rhythm with the CEO from day one to catch misalignments before they compound",
+      "Instrument contractor onboarding drop-off to understand where the flow breaks before investing in marketing acquisition",
+      "Define the contribution model early so design decisions don't collapse into a single-designer bottleneck as the team grows",
+    ],
+    processImages: [],
   },
   {
     slug: "house-special",
@@ -332,6 +473,21 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "Consumer",
+    successMetrics: [
+      "Table turn time improved vs. traditional server model",
+      "Add-on and second-order conversion increased by removing the friction of flagging a server",
+      "Operations staff adopted the tool faster than expected after the tip reframe",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Service design mapping of physical and digital touchpoints across the full table experience" },
+      { tool: "Dovetail", use: "Synthesized dining customer and operations staff research sessions" },
+    ],
+    nextSteps: [
+      "Instrument 'abandoned cart' at the table level to distinguish UI problems from decision problems",
+      "Track server tip data pre- and post-rollout to validate the tip reframe and address any staff concerns",
+      "Pilot dinner service to test whether the model holds in higher-stakes, longer-duration dining occasions",
+    ],
+    processImages: [],
   },
   {
     slug: "book-it-find-it",
@@ -369,6 +525,21 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: false,
     category: "Enterprise Tools",
+    successMetrics: [
+      "Meeting space utilization improved across the Nike campus",
+      "Employees spend less time locating booked rooms",
+      "Wayfinding and booking pairing adopted as the reference model for subsequent CBRE deployments",
+    ],
+    aiTools: [
+      { tool: "Figma", use: "Prototyped the wayfinding model pairing indoor triangulation data with hand-illustrated floor maps" },
+      { tool: "Maze", use: "Unmoderated usability testing comparing hand-drawn maps vs. CAD floor plans with Nike employees" },
+    ],
+    nextSteps: [
+      "Track 'time to room' as the primary success metric — bookings are a proxy; the real number is how long it takes to find the room",
+      "Extend the hand-drawn map model to outdoor wayfinding between campus buildings",
+      "Instrument 'room not found' errors to identify which buildings or floor layouts are causing the most navigation failures",
+    ],
+    processImages: [],
   },
 ];
 
